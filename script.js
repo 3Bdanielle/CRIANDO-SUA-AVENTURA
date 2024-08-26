@@ -1,12 +1,17 @@
-const avanca= document.querySelectorAll( '.bnt-proximo')
+const avanca = document.querySelectorAll('.btn-proximo');
 
-avanca.forEach(button =>{
+avanca.forEach(button => {
     button.addEventListener('click', function(){
-        const atual = document.querySelectorAll('ativo');
+        const atual = document.querySelector('.passo.ativo');
         const proximoPasso = 'passo-' + this.getAttribute('data-proximo');
+        
+        if (atual) {
+            atual.classList.remove('ativo');
+        }
 
-        atual.classList.remove('ativo');
-        document.getElementById(proximoPasso).classList.add('ativo');
-    })
-})
-
+        const proximoElemento = document.getElementById(proximoPasso);
+        if (proximoElemento) {
+            proximoElemento.classList.add('ativo');
+        }
+    });
+});
